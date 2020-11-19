@@ -18,21 +18,35 @@
         
         .title {
             background: linear-gradient(45deg, #ec113a, #6f32e6);
-            height: 80px;
-            line-height: 80px;
+            height: 160px;
+     
             margin: 0px auto;
-            text-align: center;
+            
         }
         
         h2 {
             float: right;
         }
+        .realname{
+        	text-align:right;
+        	width:97%;
+        	float:left;
+        }
+        .exit{
+        	float:right;
+        	width:3%;
+        	text-align:center;}
+       	.tit{
+       		line-height:160px;}
+     	h1 {
+     	text-align:center;}	
     </style>
 </head>
 
 <body>
     <div class="title">
-        <h1>欢迎使用员工管理系统</h1>
+        <h3 class="exit"><a href="emp" th:href="@{/tologin}">退出</a></h3>
+        <h1 class="tit">欢迎使用员工管理系统</h1>
     </div>
     <div>
         <table class="user" border="1" cellpadding="1" cellspacing="0">
@@ -53,9 +67,8 @@
                     <td th:text="${emp.age}"></td>
                     <!-- <td th:text="${#dates.format(emp.birth, 'yyyy-MM-dd HH:mm')}"></td> -->
                     <td>
-                        <a class="btn btn-sm btn-primary" th:href="@{/emp/toUpdataEmp/{id}(id=${emp.id})">编辑</a>
-                        <a th:href="@{/emp/del/{id}(id=${emp.id})}" class="btn btn-sm btn-danger deleteBtn">删除</a>
-                    </button>
+                    	<a th:href="@{/emp/toUpdataEmp/{id}(id=${emp.id})}">编辑</a>
+                        <a th:href="@{/emp/del/{id}(id=${emp.id})}">删除</a>
                     </td>
                 </tr>
             </tbody>
@@ -63,6 +76,7 @@
     </div>
     <br>
     <h2><a class="btn btn-sm btn-success" href="emp" th:href="@{/emp/toAddEmp}">员工添加</a></h2>
+    
 </body>
 
 </html>

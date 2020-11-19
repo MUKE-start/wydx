@@ -55,9 +55,18 @@ public class EmpController {
 	}
 	
 	@PostMapping("/updataEmp")
-	public String updataEmp(@RequestBody Employee emp) {
+	public String updataEmp(@RequestParam("id") Integer id,
+							@RequestParam("name") String name,
+							@RequestParam("age") Integer age,
+							@RequestParam("salary") double salary) {
+		Employee emp = new Employee();
+		emp.setAge(age);
+		emp.setName(name);
+		emp.setSalary(salary);
+		emp.setId(id);
+		System.out.println(emp);
 		employeeService.updataEmp(emp);
-		return "更新成功";
+		return "redirect:/emp/findAllEmp";
 	}
 	
 	//去到添加页面
