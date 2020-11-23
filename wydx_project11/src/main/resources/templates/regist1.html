@@ -19,10 +19,6 @@
 	crossorigin="anonymous">
 
 <!-- 可选的 Bootstrap 主题文件（一般不用引入） -->
-<link rel="stylesheet"
-	href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap-theme.min.css"
-	integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp"
-	crossorigin="anonymous">
 
 <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
 <script
@@ -57,8 +53,9 @@
                 alert("验证码输入错误!"); //则弹出验证码输入错误 
                 createCode(); //刷新验证码 
                 document.getElementById("ctl00_txtcode").value = ""; //清空文本框 
+                window.location.href = "/user/toRegist"
             } else { //输入正确时 
-            	window.location.href = "/tologin"
+            	window.location.href = "/user/addUser"
 
 
             }
@@ -161,7 +158,7 @@
                     window.location.href = "/tologin"
                 }
             </script>
-            <button  name="zhuce" class="btn btn-lg btn-primary btn-block" type="submit">注册</button>
+            <button name="zhuce" class="btn btn-lg btn-primary btn-block" type="submit">注册</button>
 
 
         </form>

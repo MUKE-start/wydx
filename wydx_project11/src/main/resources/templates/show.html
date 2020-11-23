@@ -2,81 +2,110 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>员工管理信息</title>
-    <style type="text/css">
-        * {
-            margin: 0px;
-            padding: 0px;
-        }
-        
-        .user {
-            width: 100%;
-            margin: 0px auto;
-        }
-        
-        .title {
-            background: linear-gradient(45deg, #ec113a, #6f32e6);
-            height: 160px;
-     
-            margin: 0px auto;
-            
-        }
-        
-        h2 {
-            float: right;
-        }
-        .realname{
-        	text-align:right;
-        	width:97%;
-        	float:left;
-        }
-        .exit{
-        	float:right;
-        	width:3%;
-        	text-align:center;}
-       	.tit{
-       		line-height:160px;}
-     	h1 {
-     	text-align:center;}	
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>员工管理信息</title>
+<style type="text/css">
+* {
+	margin: 0px;
+	padding: 0px;
+}
+
+.user {
+	width: 100%;
+	margin: 0px auto;
+}
+
+.title {
+	background: linear-gradient(45deg, #ec113a, #6f32e6);
+	height: 160px;
+	margin: 0px auto;
+}
+
+h2 {
+	float: right;
+}
+
+.realname {
+	text-align: right;
+	width: 97%;
+	float: left;
+}
+
+.exit {
+	float: right;
+	width: 3%;
+	text-align: center;
+}
+
+.tit {
+	line-height: 160px;
+}
+
+h1 {
+	text-align: center;
+}
+</style>
 </head>
 
 <body>
-    <div class="title">
-        <h3 class="exit"><a href="emp" th:href="@{/tologin}">退出</a></h3>
-        <h1 class="tit">欢迎使用员工管理系统</h1>
-    </div>
-    <div>
-        <table class="user" border="1" cellpadding="1" cellspacing="0">
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>名字</th>
-                    <th>工资</th>
-                    <th>年龄</th>
-                    <th>操作</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr th:each="emp:${emps}">
-                    <td th:text="${emp.id}"></td>
-                    <td>[[${emp.name}]]</td>
-                    <td th:text="${emp.salary}"></td>
-                    <td th:text="${emp.age}"></td>
-                    <!-- <td th:text="${#dates.format(emp.birth, 'yyyy-MM-dd HH:mm')}"></td> -->
-                    <td>
-                    	<a th:href="@{/emp/toUpdataEmp/{id}(id=${emp.id})}">编辑</a>
-                        <a th:href="@{/emp/del/{id}(id=${emp.id})}">删除</a>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-    <br>
-    <h2><a class="btn btn-sm btn-success" href="emp" th:href="@{/emp/toAddEmp}">员工添加</a></h2>
-    
+	<div class="title">
+		<h3 class="exit">
+			<a href="emp" th:href="@{/tologin}">退出</a>
+		</h3>
+		<h1 class="tit">欢迎使用员工管理系统</h1>
+
+	</div>
+	<div>
+		<form action="/emp/findByName" method="post">
+			<input name="name" type="text" placeholder="请输入用户名">
+			<button type="submit">
+			查找
+			<tton>
+		</form>
+	</div>
+
+	<div>
+		<table class="user" border="1" cellpadding="1" cellspacing="0">
+			<thead>
+				<tr>
+					<th>ID</th>
+					<th>名字</th>
+					<th>工资</th>
+					<th>年龄</th>
+					<th>操作</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="emp:${emps}">
+					<td th:text="${emp.id}"></td>
+					<td>[[${emp.name}]]</td>
+					<td th:text="${emp.salary}"></td>
+					<td th:text="${emp.age}"></td>
+					<!-- <td th:text="${#dates.format(emp.birth, 'yyyy-MM-dd HH:mm')}"></td> -->
+					<td><a th:href="@{/emp/toUpdataEmp/{id}(id=${emp.id})}">编辑</a>
+						<a th:href="@{/emp/del/{id}(id=${emp.id})}">删除</a></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<br>
+	<h2>
+		<a class="btn btn-sm btn-success" href="emp"
+			th:href="@{/emp/toAddEmp}">员工添加</a>
+	</h2>
+	<div id="page">
+		<div class="page-inner">
+			<a href="/emp/findByPage/1">1</span></a> <a href="/emp/findByPage/2">2</span></a> <a
+				href="/emp/findByPage/3"></i> </span><span class="pc">3</span></a> <a
+				href="/emp/findByPage/4"></i> </span><span class="pc">4</span></a> <a
+				href="/emp/findByPage/5"></i> </span><span class="pc">5</span></a>
+			<!-- <a href=">下一页 </a> -->
+		</div>
+	</div>
+	<br>
+	<br>
+
 </body>
 
 </html>

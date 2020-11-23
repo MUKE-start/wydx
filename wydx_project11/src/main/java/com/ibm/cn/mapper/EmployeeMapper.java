@@ -24,5 +24,7 @@ public interface EmployeeMapper {
 	public Employee getEmpById(Integer id);
 	
 	//根据名字查员工
-	public Employee getEmpByName(String name);
+	public List<Employee> getEmpByName(String name);
+	
+	
 }

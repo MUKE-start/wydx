@@ -39,7 +39,7 @@ public class EmployeeService {
 	}
 	
 	//根据名字查员工
-	public Employee getEmpByName(String name) {
+	public List<Employee> getEmpByName(String name) {
 		return employeeMapper.getEmpByName(name);
 	}
 	

@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.github.pagehelper.PageHelper;
 import com.ibm.cn.entity.Employee;
 import com.ibm.cn.service.EmployeeService;
 
@@ -24,7 +25,7 @@ public class HelloController {
 	
 	@Autowired
 	EmployeeService employeeService;
-	@RequestMapping("/tologin")
+	@RequestMapping("tologin")
     public String index(){
         
         return "login";
@@ -47,6 +48,7 @@ public class HelloController {
 	@ResponseBody
     public Layui list(Model model){
         //查询列表数据
+		PageHelper.startPage(1, 2);
 		List<Employee> emps = employeeService.findAllEmp();;
 		
 		return Layui.data(1000, emps);

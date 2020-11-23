@@ -2,7 +2,9 @@ package com.ibm.cn.controller;
 
 import java.util.List;
 
+import javax.xml.crypto.dsig.keyinfo.PGPData;
 
+import org.junit.runners.Parameterized.Parameter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.github.pagehelper.PageHelper;
 import com.ibm.cn.entity.Employee;
 import com.ibm.cn.service.EmployeeService;
 
@@ -25,8 +28,8 @@ public class EmpController {
 	EmployeeService employeeService;
 	
 	@GetMapping("/findAllEmp")
-	
 	public String getAllEmp(Model model) {
+		PageHelper.startPage(1, 10);
 		List<Employee> emps = employeeService.findAllEmp();
 		
 		model.addAttribute("emps", emps);
@@ -75,13 +78,32 @@ public class EmpController {
 		return "addEmp";
 	}
 	
+	//去到编辑页面
 	@GetMapping("/toUpdataEmp/{id}")
 	public String toUpdataEmp(@PathVariable Integer id,
 							  Model model) {
 		Employee employee= employeeService.getEmpById(id);
 		model.addAttribute("emp", employee);
 //		System.out.println(employee);
-		return "editEmp";
-		
+		return "editEmp";	
 	}
+	
+	//分页查询返回首页
+	@GetMapping("/findByPage/{page}")
+	public String findByPage(Model model,@PathVariable Integer page) {
+		PageHelper.startPage(page, 10);
+		List<Employee> emps = employeeService.findAllEmp();
+		model.addAttribute("emps", emps);
+		return "show";
+	}
+	
+	//根据名字模糊查询
+	@PostMapping("/findByName")
+	public String findEmpByName(Model model,
+								@RequestParam("name")String name) {
+		List<Employee> emps = employeeService.getEmpByName("%"+name+"%");
+		model.addAttribute("emps", emps);
+		return "show";
+	}
+	
 }	

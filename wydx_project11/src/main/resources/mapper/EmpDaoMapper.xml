@@ -23,4 +23,10 @@
 		select * from t_emp where id=#{id}
 	</select>
 	
+	<!-- 根据员工名字模糊查询 -->
+	
+	<select id="getEmpByName" parameterType="String" resultType="com.ibm.cn.entity.Employee">
+		select * from t_emp where name like #{name}
+	</select>
+	
 </mapper>

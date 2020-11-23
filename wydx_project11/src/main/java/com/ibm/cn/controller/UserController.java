@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.github.pagehelper.PageHelper;
 import com.ibm.cn.entity.Employee;
 import com.ibm.cn.entity.User;
 import com.ibm.cn.service.EmployeeService;
@@ -66,6 +67,7 @@ public class UserController {
 							HttpSession session,
 							Model model) {
 		//查询出所有的员工信息
+		PageHelper.startPage(1, 10);
 		List<Employee> emp = employeeService.findAllEmp();
 		User u = userService.findUser(username,password);
 		System.out.println(u);
