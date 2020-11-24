@@ -65,11 +65,8 @@
 				class="sr-only">Password</label> <input name="password" type="password"
 				id="inputPassword" class="form-control" placeholder="密码" required>
 			<div class="checkbox">
-				<label> <input class="remember-me" type="checkbox" value="remember-me">
-					记住
-
-				</label> <br> <span>没有账号？</span> <input type="button" value="注册"
-					onclick="zhuce()">
+					<button onclick="zhuce()" class="btn btn-lg btn-primary btn-block"
+				type="submit">注册</button>
 				<script>
 					function zhuce() {
 						window.location.href = "/user/toRegist"
@@ -79,7 +76,9 @@
 			<button onclick="zhuce" class="btn btn-lg btn-primary btn-block"
 				type="submit">登陆</button>
 		</form>	
+		<p style="color: red;" th:text="${error}"></p>
 	</div>
+	
 	<!-- /container -->
 
 

@@ -85,7 +85,7 @@ public class UserController {
 	//去到注册页面
 	@GetMapping("/toRegist")
 	public String toRegist() {
-		return "regist1";
+		return "regist";
 	}
 	
 	
