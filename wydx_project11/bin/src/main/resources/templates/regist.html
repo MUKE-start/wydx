@@ -160,60 +160,33 @@
             }
         }
     </script> -->
-	<style>
-		
-		.container{
-			width: 350px;
-			height: 300px;
-			text-align: center;
-			background-color: rgba(255, 255, 255, 0.5);
-		}
-		h1{
-		
-			color: rgb(69, 29, 133);
-            font-weight: 800;
-		}
-		.form-signin-heading{
-			color: rgb(69, 29, 133);
-            font-weight: 800;
-		}
-		#code{
-		float:left;
-		margin-left: 5px}
-		
-	</style>
+
 </head>
 
 <body>
 
     <div class="container">
         <h1>注册员工信息</h1>
-        <br>
-        <br>
         <form class="form-signin" method="post" onsubmit="return checkForm(this);"  action="/user/addUser">
 
-       			
+            <h2 class="form-signin-heading">注册</h2>
             <label for="inputEmail" class="sr-only">Email address</label>
-            <input name="username" type="text" id="inputEmail" class="form-control" placeholder="用户名" required autofocus><br>
+            <input name="username" type="text" id="inputEmail" class="form-control" placeholder="用户名" required autofocus>
             <label for="inputName" class="sr-only">Name</label>
-            <input name="realname" type="text" id="inputName" class="form-control" placeholder="真实姓名" required autofocus><br>
+            <input name="realname" type="text" id="inputName" class="form-control" placeholder="真实姓名" required autofocus>
             <label for="inputPassword" class="sr-only"></label>
-            <label for="inputPassword" class="sr-only">Password</label>
-            <input name="password" type="password" id="inputPassword" class="form-control" placeholder="密码" required><br>
-            <label for="inputPassword" class="sr-only">Password</label>
-            <!--时间：2017-01-11 描述：输入框ct100_textcode -->
-            <!-- <input type="text" id="ctl00_txtcode" class="text1" /> -->
-            <input style="float: left" type="text" id="ctl00_txtcode">
-            <!--时间：2017-01-11 描述：把验证码定义为按钮，点击刷新-->
-            <input type="button" id="code" onclick="createCode()" />
-            <br><br>
-            <div style="float: left">
+            <div>
                 <input type="radio" class="sex" name="sex" value="man" required autofocus checked>男
                 <input type="radio" class="sex" name="sex" value="woman" required autofocus>女
             </div>
-            <br>
-            <br>
+            <label for="inputPassword" class="sr-only">Password</label>
+            <input name="password" type="password" id="inputPassword" class="form-control" placeholder="密码" required>
+            <label for="inputPassword" class="sr-only">Password</label>
             
+            <!--时间：2017-01-11 描述：输入框ct100_textcode -->
+            <input type="text" id="ctl00_txtcode" class="text1" />
+            <!--时间：2017-01-11 描述：把验证码定义为按钮，点击刷新-->
+            <input type="button" id="code" onclick="createCode()" />
             <!--时间：2017-01-11 描述：验证按钮 -->
             <!-- <div class="code">
                 <form action="">
@@ -223,15 +196,15 @@
                     <input id="Button1" class="btn" onclick="validate();" type="button" value="确定" />
 
             </div> -->
- 			<!-- <span style="float: left">已有账号？</span> -->
-            <!-- <input style="float: left" type="button" value="登陆" onclick="denglu()"> -->
-            <button name="zhuce" class="btn btn-lg btn-primary btn-block" onclick="denglu()">登录</button>
+            <br>
+            <span>已有账号？</span>
+            <input type="button" value="登陆" onclick="denglu()">
             <script>
                 function denglu() {
                     window.location.href = "/tologin"
                 }
             </script>
-            <button style="margin-top: 2px" name="zhuce" class="btn btn-lg btn-primary btn-block" type="submit">注册</button>
+            <button name="zhuce" class="btn btn-lg btn-primary btn-block" type="submit">注册</button>
 
 
         </form>

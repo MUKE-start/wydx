@@ -2,7 +2,7 @@ package com.ibm.cn;
 
 
 
-import org.junit.Test;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -22,7 +22,6 @@ class WydxProject11ApplicationTests {
 	@Autowired
 	EmployeeService employeeService;
 
-	@Test
 	void contextLoads() {
 			User u = new User();
 			u.setId(1);
@@ -34,7 +33,7 @@ class WydxProject11ApplicationTests {
 			System.out.println("添加成功！");
 		}
 	
-	@Test
+
 	void testUpdata() {
 		Employee employee = new Employee();
 		employee.setId(1);
