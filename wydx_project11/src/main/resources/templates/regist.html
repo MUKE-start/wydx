@@ -60,6 +60,52 @@
 
             }
         }
+        function checkForm(form) {
+
+    		if (form.username.value == "") {
+
+    			alert("错误：用户名不能为空！");
+
+    			form.username.focus();
+
+    			return false;
+
+    		}
+    		if (form.password.value.length > 30) {
+
+    			alert("错误：密码最多包含30个字符！");
+
+    			form.password.focus();
+
+    			return false;
+
+    		}
+    		if (form.realname.value.length > 20) {
+
+    			alert("错误：真实姓名最多包含20个字符！");
+
+    			form.realname.focus();
+
+    			return false;
+    		}
+    		if (form.username.value.length > 30) {
+
+    			alert("错误：用户姓名最多包含30个字符！");
+
+    			form.username.focus();
+
+    			return false;
+    		}
+    		var inputCode = document.getElementById("ctl00_txtcode").value.toUpperCase(); //获取输入框内验证码并转化为大写  
+            if (inputCode.length <= 0) { //若输入的验证码长度为0 
+                alert("请输入验证码！"); //则弹出请输入验证码 
+            } else if (inputCode != code) { //若输入的验证码与产生的验证码不一致时 
+                alert("验证码输入错误!"); //则弹出验证码输入错误 
+                createCode(); //刷新验证码 
+                document.getElementById("ctl00_txtcode").value = ""; //清空文本框 
+                return false;
+            }
+    	}
     </script>
     <!-- <style type="text/css">
         /* .code {
@@ -121,7 +167,7 @@
 
     <div class="container">
         <h1>注册员工信息</h1>
-        <form class="form-signin" method="post" action="/user/addUser">
+        <form class="form-signin" method="post" onsubmit="return checkForm(this);"  action="/user/addUser">
 
             <h2 class="form-signin-heading">注册</h2>
             <label for="inputEmail" class="sr-only">Email address</label>

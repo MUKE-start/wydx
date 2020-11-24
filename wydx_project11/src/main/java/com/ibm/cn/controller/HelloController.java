@@ -44,13 +44,13 @@ public class HelloController {
 //		return json;
 //	}
 //
-	@RequestMapping("/list")
-	@ResponseBody
-    public Layui list(Model model){
-        //查询列表数据
-		PageHelper.startPage(1, 2);
-		List<Employee> emps = employeeService.findAllEmp();;
-		
-		return Layui.data(1000, emps);
-    }
+//	@RequestMapping("/list")
+//	@ResponseBody
+//    public Layui list(Model model){
+//        //查询列表数据
+//		PageHelper.startPage(1, 2);
+//		List<Employee> emps = employeeService.findAllEmp();;
+//		
+//		return Layui.data(1000, emps);
+//    }
 }

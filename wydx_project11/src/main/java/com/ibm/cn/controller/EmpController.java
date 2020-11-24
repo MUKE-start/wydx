@@ -27,6 +27,7 @@ public class EmpController {
 	@Autowired
 	EmployeeService employeeService;
 	
+	//查找所有员工返回主页面展示
 	@GetMapping("/findAllEmp")
 	public String getAllEmp(Model model) {
 		PageHelper.startPage(1, 10);
@@ -37,6 +38,7 @@ public class EmpController {
 		return "show";
 	}
 	
+	//插入员工
 	@PostMapping("/insertEmp")
 	public String insertEmp(@RequestParam("name") String name,
 							@RequestParam("age") Integer age,
@@ -51,12 +53,14 @@ public class EmpController {
 		return "redirect:findAllEmp";
 	}
 	
+	//删除员工
 	@GetMapping("/del/{id}")
 	public String delEmp(@PathVariable Integer id) {
 		employeeService.delEmp(id);
 		return "redirect:../findAllEmp";
 	}
 	
+	//更新员工
 	@PostMapping("/updataEmp")
 	public String updataEmp(@RequestParam("id") Integer id,
 							@RequestParam("name") String name,
