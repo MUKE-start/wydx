@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<link rel="stylesheet" href="/layui/css/layui.css">
+<!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+<!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!-- 可选的 Bootstrap 主题文件（一般不用引入） -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>员工管理信息</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style type="text/css">
+        .form-control {
+            top: 165px;
+            width: 180px;
+        }
+        
+        .btn1 {
+            position: fixed;
+            left: 182px;
+            top: 80px;
+        }
+    </style>
+</head>
+
+<body class="layui-layout-body">
+    <div class="layui-layout layui-layout-admin">
+        <div class="layui-header">
+            <ul class="layui-nav" lay-filter="">
+                <li class="layui-nav-item layui-this"><a href="/emp/findAllEmp">首页</a></li>
+                <li class="layui-nav-item "><a href="/emp/toAddEmp">添加员工</a></li>
+            </ul>
+            <ul class="layui-nav layui-layout-right">
+
+                <li class="layui-nav-item"><a href="/tologin">退出</a></li>
+            </ul>
+        </div>
+
+        <div class="size table-responsive">
+            <br>
+            <div>
+                <form action="/emp/findByName" method="post" class="search">
+                    <input class="form-control" name="name" type="text" placeholder="请输入用户名">
+                    <span class="btn1"><button class="btn btn-primary glyphicon glyphicon-search" type="submit">查找</button></span>
+                </form>
+            </div>
+            <table class="layui-table" lay-skin="row">
+                <thead>
+                    <tr>
+                        <th class="th1">ID</th>
+                        <th class="th2">名字</th>
+                        <th class="th3">工资</th>
+                        <th class="th4">年龄</th>
+                        <th class="th5">操作</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="emp:${emps}">
+                        <td th:text="${emp.id}"></td>
+                        <td>[[${emp.name}]]</td>
+                        <td th:text="${emp.salary}"></td>
+                        <td th:text="${emp.age}"></td>
+                        <!-- <td th:text="${#dates.format(emp.birth, 'yyyy-MM-dd HH:mm')}"></td> -->
+                        <td>
+                            <a class="glyphicon glyphicon-pencil" th:href="@{/emp/toUpdataEmp/{id}(id=${emp.id})}">编辑&nbsp&nbsp</a>
+                            <a class="glyphicon glyphicon-trash" th:href="@{/emp/del/{id}(id=${emp.id})}">删除</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <br>
+
+    <ul class="pagination">
+        <li><a href="/emp/findByPage/1">1</span></a>
+            <a href="/emp/findByPage/2">2</span></a>
+        </li>
+        <li>
+            <a href="/emp/findByPage/3"></i>
+                </span><span class="pc">3</span></a>
+        </li>
+        <li>
+            <a href="/emp/findByPage/4"></i>
+                </span><span class="pc">4</span></a>
+        </li>
+        <li>
+            <a href="/emp/findByPage/5"></i>
+                </span><span class="pc">5</span></a>
+        </li>
+        <!-- <a href=">下一页 </a> -->
+    </ul>
+
+    <br><br>
+
+    <script src="../static/layui/layui.js"></script>
+    <script>
+        //JavaScript代码区域
+        layui.use('element', function() {
+            var element = layui.element;
+
+        });
+    </script>
+</body>
+
+</html>
