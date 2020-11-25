@@ -56,7 +56,7 @@ public class UserController {
 		}else {
 			System.out.println("该用户已存在");
 			model.addAttribute("error", "该用户已存在！");
-			return "regist1";
+			return "regist";
 		}
 		
 	}
